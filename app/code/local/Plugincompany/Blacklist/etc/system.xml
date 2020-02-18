@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2014-2026 Plugin Company
+ *
+ * This file is part of Fraud Prevention, released under the MIT License.
+ * See the LICENSE file in the project root.
+ */
+-->
+<config>
+	  <sections>
+		<plugincompany_blacklist  translate="label" module="plugincompany_blacklist">
+		<label>Fraud Prevention</label>
+		<tab>sales</tab>
+		<frontend_type>text</frontend_type>
+		<sort_order>10000</sort_order>
+		<show_in_default>1</show_in_default>
+		<show_in_website>1</show_in_website>
+		<show_in_store>1</show_in_store>            
+					<groups>
+				      <plugincompany_blacklist_group translate="label">
+					  <label>Fraud Suspicion Settings</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>0</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+                          <expanded>1</expanded>
+                          <fields>
+                              <address_type translate="label">
+                                  <label>Default fraud suspicion address</label>
+                                  <frontend_type>select</frontend_type>
+                                  <source_model>Plugincompany_Blacklist_Model_System_Config_Source_Addresstype</source_model>
+                                  <sort_order>0</sort_order>
+                                  <show_in_default>1</show_in_default>
+                                  <show_in_website>1</show_in_website>
+                                  <show_in_store>1</show_in_store>
+                                  <comment>Address to be included in the fraud suspicion record. If 'Both' is selected, two fraud suspicion records will be created for each suspicious order.</comment>
+                              </address_type>
+                              <show_comment translate="label">
+                                  <label>Enable comments</label>
+                                  <frontend_type>select</frontend_type>
+                                  <source_model>adminhtml/system_config_source_yesno</source_model>
+                                  <sort_order>1</sort_order>
+                                  <show_in_default>1</show_in_default>
+                                  <show_in_website>1</show_in_website>
+                                  <show_in_store>1</show_in_store>
+                                  <comment>Show comment field when marking a suspicious order.</comment>
+                              </show_comment>
+                              <send_order_confirmation translate="label">
+                                  <label>Send order confirmation</label>
+                                  <frontend_type>select</frontend_type>
+                                  <source_model>adminhtml/system_config_source_yesno</source_model>
+                                  <sort_order>2</sort_order>
+                                  <show_in_default>1</show_in_default>
+                                  <show_in_website>1</show_in_website>
+                                  <show_in_store>1</show_in_store>
+                                  <comment>Send order confirmation e-mail if an order is blacklisted.</comment>
+                              </send_order_confirmation>
+                          </fields>
+					   </plugincompany_blacklist_group>
+                        <plugincompany_blacklist_customeraccount translate="label">
+                            <label>Customer Blacklisting Settings</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <expanded>1</expanded>
+                            <fields>
+                                <afterorder translate="label">
+                                    <label>Blacklist on fraudulent order</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>1</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment>Blacklist customer account when placing or updating a fraudulent order. Order is still submitted and marked as fraudulent, but customer will be logged out and blocked.</comment>
+                                </afterorder>
+                                <addresssave translate="label">
+                                    <label>Blacklist on new address</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment>Blacklist customer account while adding a blacklisted address during checkout or in the account details. Customer will be logged out and blocked.</comment>
+                                </addresssave>
+                                <message>
+                                    <label>Error message</label>
+                                    <frontend_type>textarea</frontend_type>
+                                    <sort_order>30</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment>Message to be displayed when blacklisted customer is logged out or blocked from logging in.</comment>
+                                </message>
+                            </fields>
+                        </plugincompany_blacklist_customeraccount>
+                        <plugincompany_blacklist_payment translate="label">
+                            <label>Payment Processing Settings</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <expanded>1</expanded>
+                            <fields>
+                                <enable translate="label">
+                                    <label>Block payment processing</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>1</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment>Block payments by hiding the payment methods section during checkout if blacklisted address is used.</comment>
+                                </enable>
+                                <text translate="label">
+                                    <label>Error message</label>
+                                    <frontend_type>textarea</frontend_type>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment>Message to be displayed instead of the payment methods section (HTML allowed).</comment>
+                                </text>
+                            </fields>
+                        </plugincompany_blacklist_payment>
+                        <plugincompany_blacklist_paymentfailed translate="label">
+                            <label>Failed Payment Transaction Settings</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <expanded>1</expanded>
+                            <fields>
+                                <shipping translate="label">
+                                    <label>Add shipping address suspicion</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>1</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment>Add a fraud suspicion strike to the shipping address when payment transaction fails.</comment>
+                                </shipping>
+                                <billing translate="label">
+                                    <label>Add billing address suspicion</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment>Add a fraud suspicion strike to the billing address when payment transaction fails.</comment>
+                                </billing>
+                            </fields>
+                        </plugincompany_blacklist_paymentfailed>
+                        <field_matching translate="label">
+                            <label>Field Matching Settings</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <expanded>1</expanded>
+                            <fields>
+                                <excluded_email_domains translate="label">
+                                    <label>Excluded e-mail domains</label>
+                                    <frontend_type>textarea</frontend_type>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment>List of e-mail domains excluded from blacklisting rules based on the e-mail domain attribute. It's recommended to extend this list with common e-mail domain names relevant for your shop.</comment>
+                                </excluded_email_domains>
+                            </fields>
+                        </field_matching>
+					</groups>
+
+		</plugincompany_blacklist>
+	  </sections>
+</config>

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2014-2026 Plugin Company
+ *
+ * This file is part of Fraud Prevention, released under the MIT License.
+ * See the LICENSE file in the project root.
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <plugincompany_blacklist translate="title" module="plugincompany_blacklist">
+                                        <title>Fraud Prevention</title>
+                                    </plugincompany_blacklist>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <sales>
+                        <children>
+                            <plugincompany_blacklist translate="title" module="plugincompany_blacklist">
+                                <title>Fraud Prevention</title>
+                                <children>
+                                    <item translate="title" module="plugincompany_blacklist">
+                                        <title>Fraud Suspicions</title>
+                                        <sort_order>10000</sort_order>
+                                    </item>
+                                    <rule translate="title" module="plugincompany_blacklist">
+                                        <title>Blacklisting Rules</title>
+                                        <sort_order>20000</sort_order>
+                                    </rule>
+                                </children>
+                            </plugincompany_blacklist>
+                        </children>
+                    </sales>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <sales>
+            <children>
+                <plugincompany_blacklist translate="title" module="plugincompany_blacklist">
+                    <title>Fraud Prevention</title>
+                    <sort_order>10000</sort_order>
+                    <children>
+                        <item translate="title" module="plugincompany_blacklist">
+                            <title>Fraud Suspicions</title>
+                            <action>adminhtml/blacklist_item</action>
+                            <sort_order>10</sort_order>
+                        </item>
+                        <rule translate="title" module="plugincompany_blacklist">
+                            <title>Blacklisting Rules</title>
+                            <action>adminhtml/blacklist_rule</action>
+                            <sort_order>20</sort_order>
+                        </rule>
+                    </children>
+                </plugincompany_blacklist>
+            </children>
+        </sales>
+    </menu>
+</config>

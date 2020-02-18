@@ -1,0 +1,48 @@
+<?php
+/**
+ * Copyright (c) 2014-2026 Plugin Company
+ *
+ * This file is part of Fraud Prevention, released under the MIT License.
+ * See the LICENSE file in the project root.
+ */
+?>
+<script type="text/javascript">
+    function showSuspicionOptionsWindow() {
+        var windowHtml = suspicionOptionsWindowHtml();
+        if(windowHtml == ''){
+            //no options to choose from
+            submitSuspicion();
+        }else{
+            var suspicionOptionsWindow = new Window({className:'magento',
+                title:'Fraud Suspicion Options',
+                width:600,
+                height:330,
+                minimizable:false,
+                maximizable: false
+            });
+            suspicionOptionsWindow.showCenter(true);
+            suspicionOptionsWindow.getContent().update(windowHtml);
+        }
+
+    }
+    function suspicionOptionsWindowHtml(){
+           return '<?php echo str_replace(array("\n","\r"),'',$this->getFormHtml());?>';
+    }
+
+    function submitSuspicion() {
+        window.location = "<?php echo $this->getFormUrl(); ?>";
+    }
+</script>
+<?php
+$orderId = Mage::app()->getRequest()->getParam('order_id');
+if($orderId){
+    $order = Mage::getModel('sales/order')->load($orderId);
+    if($order->getStatus() == 'blacklist'){
+?>
+    <style type="text/css">
+        #order_status {color:red;font-size:1.2em}
+    </style>
+<?php
+    }
+}
+?>

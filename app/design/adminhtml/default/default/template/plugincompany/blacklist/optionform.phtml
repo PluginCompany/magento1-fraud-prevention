@@ -1,0 +1,63 @@
+<?php
+/**
+ * Copyright (c) 2014-2026 Plugin Company
+ *
+ * This file is part of Fraud Prevention, released under the MIT License.
+ * See the LICENSE file in the project root.
+ */
+?>
+<?php if ($this->canShowAddress() || $this->canShowComment()) { ?>
+    <form method="post" name="suspicionform" id="suspicionform" action="<?php echo $this->getFormUrl(); ?>">
+        <div class="entry-edit" style="margin-top:2px;">
+            <div class="fieldset">
+                <div class="hor-scroll">
+                    <table cellspacing="0" class="form-list">
+                        <tbody>
+                       <?php if ($this->canShowAddress()) { ?>
+                           <tr>
+                               <td class="label">
+                                       <label for="address_type">
+                                           <?php echo $this->__('Fraud Suspicion Address') ?>
+                                       </label>
+                               </td>
+                               <td class="value">
+                                       <select name="address_type" id="address_type">
+                                           <?php if ($this->canShowShipping()) { ?>
+                                               <option value="shipping">Shipping address</option>
+                                           <?php } ?>
+                                           <option value="billing">Billing address</option>
+                                           <?php if ($this->canShowShipping()) { ?>
+                                               <option value="both">Both shipping and billing address</option>
+                                           <?php } ?>
+                                       </select>
+                                   <p class="note"><span>If \'Both\' is selected, two fraud suspicion records will be created for this order.</span></p>
+                               </td>
+                           </tr>
+                        <?php } ?>
+                        <?php if ($this->canShowComment()) { ?>
+                            <tr>
+                                <td class="label">
+                                    <label for="suspicion_comment">
+                                        <?php echo $this->__('Comment') ?>
+                                    </label>
+                                </td>
+                                <td class="value">
+                                    <textarea id="suspicion_comment" name="suspicion_comment"></textarea>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                               <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <button class="button scaleable save" type="submit"><span>Submit</span></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey();?>" />
+    </form>
+<?php } ?>

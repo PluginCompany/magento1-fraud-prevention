@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2014-2026 Plugin Company
+ *
+ * This file is part of Fraud Prevention, released under the MIT License.
+ * See the LICENSE file in the project root.
+ */
+--> 
+<layout>
+    <adminhtml_blacklist_item_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>sales/plugincompany_blacklist/item</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="plugincompany_blacklist/adminhtml_item" name="item" />
+        </reference>
+    </adminhtml_blacklist_item_index>
+    <adminhtml_blacklist_item_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="plugincompany_blacklist/adminhtml_item_grid" name="item_grid"/>
+        </block>
+    </adminhtml_blacklist_item_grid>
+    <!-- Item add/edit action -->
+    <adminhtml_blacklist_item_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>sales/plugincompany_blacklist/item</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="plugincompany_blacklist/adminhtml_item_edit" name="item_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="plugincompany_blacklist/adminhtml_item_edit_tabs" name="item_tabs"></block>
+        </reference>
+    </adminhtml_blacklist_item_edit>
+
+    <adminhtml_blacklist_rule_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>sales/plugincompany_blacklist/rule</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="plugincompany_blacklist/adminhtml_rule" name="rule" />
+
+        </reference>
+    </adminhtml_blacklist_rule_index>
+    <adminhtml_blacklist_rule_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="plugincompany_blacklist/adminhtml_rule_grid" name="rule_grid"/>
+        </block>
+    </adminhtml_blacklist_rule_grid>
+    <!-- Rule add/edit action -->
+    <adminhtml_blacklist_rule_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>sales/plugincompany_blacklist/rule</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="plugincompany_blacklist/adminhtml_rule_edit" name="rule_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="plugincompany_blacklist/adminhtml_rule_edit_tabs" name="rule_tabs"></block>
+        </reference>
+    </adminhtml_blacklist_rule_edit>
+
+    <adminhtml_sales_order_view>
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="plugincompany_blacklist/adminhtml_sales_order_edit_formwrapper" after="-" />
+        </reference>
+    </adminhtml_sales_order_view>
+
+</layout>

@@ -1,0 +1,4 @@
+app/code/local/Plugincompany/Blacklist app/code/local/Plugincompany/Blacklist
+app/design/adminhtml/default/default/layout/plugincompany_blacklist.xml app/design/adminhtml/default/default/layout/plugincompany_blacklist.xml
+app/design/adminhtml/default/default/template/plugincompany/blacklist app/design/adminhtml/default/default/template/plugincompany/blacklist
+app/etc/modules/Plugincompany_Blacklist.xml app/etc/modules/Plugincompany_Blacklist.xml
